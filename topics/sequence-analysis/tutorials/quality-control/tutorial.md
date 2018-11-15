@@ -15,7 +15,11 @@ objectives:
   - Use tools for quality correction
   - Use a tool to aggregate FastQC output
   - Process single-end and paired-end data
-requirements:
+follow_up_training:
+  -
+    type: "internal"
+    topic_name: sequence-analysis
+    tutorial_name: mapping
 time_estimation: "1H"
 key_points:
   - Run quality control on every dataset before running any other bioinformatics analysis

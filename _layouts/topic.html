@@ -21,13 +21,21 @@ layout: base
 
         <ul>
             {% for requirement in topic.requirements %}
-                <li>
-                    {% if requirement.type == "internal" %}
-                    <a href="{{ site.baseurl }}/topics{{ requirement.link }}">{{ requirement.title }}</a>
-                    {% elsif material.type == "external" %}
-                    <a href="{{ requirement.link }}">{{ requirement.title }}</a>
+                {% if requirement.type == "internal" %}
+                    {% assign required_topic_metadata = site.data[requirement.topic_name] %}
+                    {% assign required_topic = site.pages | topic_filter:requirement.topic_name %}
+                    {% if requirement.tutorial_name %}
+                        {% for required_tuto in required_topic %}
+                            {% if required_tuto.tutorial_name == requirement.tutorial_name %}
+                                <li><a href="{{ site.baseurl }}/topics/{{ requirement.topic_name }}/tutorials/{{ requirement.tutorial_name }}/tutorial.html">{{ required_tuto.title }} ({{ required_topic_metadata.title }})</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <li><a href="{{ site.baseurl }}/topics/{{ requirement.topic_name }}">{{ required_topic_metadata.title }}</a></li>
                     {% endif %}
-                </li>
+                {% else %}
+                    <li><a href="{{ requirement.link }}">{{ requirement.title }}</a></li>
+                {% endif %}
             {% endfor %}
         </ul>
         {% endif %}

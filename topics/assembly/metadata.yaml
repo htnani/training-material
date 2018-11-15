@@ -6,13 +6,12 @@ summary: "DNA sequence data has become an indispensable tool for Molecular Biolo
 docker_image:
 requirements:
   -
-    title: "Galaxy introduction"
     type: "internal"
-    link: "/introduction/"
+    topic_name: "introduction"
   -
-    title: "Quality Control"
     type: "internal"
-    link: "/sequence-analysis/"
+    topic_name: "sequence-analysis"
+    tutorial_name: "quality-control"
 
 maintainers:
   - slugger70

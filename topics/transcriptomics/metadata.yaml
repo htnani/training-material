@@ -6,13 +6,17 @@ summary: Training material for all kinds of transcriptomics analysis.
 docker_image: null
 requirements:
   -
-    title: "Galaxy introduction"
     type: "internal"
-    link: "/introduction/"
+    topic_name: "introduction"
   -
-    title: "Quality control"
     type: "internal"
-    link: "/sequence-analysis/"
+    topic_name: "sequence-analysis"
+    tutorial_name: "quality-control"
+  -
+    type: "internal"
+    topic_name: "sequence-analysis"
+    tutorial_name: "mapping"
+
 
 maintainers:
   - bebatut

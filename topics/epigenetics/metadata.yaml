@@ -8,17 +8,16 @@ edam_ontology: "topic_3173"
 
 requirements:
   -
-    title: "Galaxy introduction"
     type: "internal"
-    link: "/introduction/"
+    topic_name: "introduction"
   -
-    title: "Quality control"
     type: "internal"
-    link: "/sequence-analysis/"
+    topic_name: "sequence-analysis"
+    tutorial_name: "quality-control"
   -
-    title: "Mapping"
     type: "internal"
-    link: "/sequence-analysis/"
+    topic_name: "sequence-analysis"
+    tutorial_name: "mapping"
 
 maintainers:
   - joachimwolff

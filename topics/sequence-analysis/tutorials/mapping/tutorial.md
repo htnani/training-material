@@ -15,6 +15,19 @@ key_points:
   - Know your data!
   - Mapping is not trivial
   - There are many mapping algorithms, it depends on your data which one to choose
+requirements:
+  -
+    type: "internal"
+    topic_name: sequence-analysis
+    tutorial_name: quality-control
+  -
+    type: "internal"
+    topic_name: sequence-analysis
+follow_up_training:
+  -
+    type: "internal"
+    topic_name: transcriptomics
+    tutorial_name: ref-based
 contributors:
   - joachimwolff
   - bebatut

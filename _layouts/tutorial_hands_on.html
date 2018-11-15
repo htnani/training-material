@@ -172,22 +172,38 @@ layout: base
             <strong>{% icon requirements %} Requirements</strong>
             <ul>
             {% for requirement in topic.requirements %}
-                <li>
-                    {% if requirement.type == "internal" %}
-                    <a href="{{ site.baseurl }}/topics{{ requirement.link }}">{{ requirement.title }}</a>
-                    {% elsif requirement.type == "external" %}
-                    <a href="{{ requirement.link }}">{{ requirement.title }}</a>
+                {% if requirement.type == "internal" %}
+                    {% assign required_topic_metadata = site.data[requirement.topic_name] %}
+                    {% assign required_topic = site.pages | topic_filter:requirement.topic_name %}
+                    {% if requirement.tutorial_name %}
+                        {% for required_tuto in required_topic %}
+                            {% if required_tuto.tutorial_name == requirement.tutorial_name %}
+                                <li><a href="{{ site.baseurl }}/topics/{{ requirement.topic_name }}/tutorials/{{ requirement.tutorial_name }}/tutorial.html">{{ required_tuto.title }} ({{ required_topic_metadata.title }})</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <li><a href="{{ site.baseurl }}/topics/{{ requirement.topic_name }}">{{ required_topic_metadata.title }}</a></li>
                     {% endif %}
-                </li>
+                {% else %}
+                    <li><a href="{{ requirement.link }}">{{ requirement.title }}</a></li>
+                {% endif %}
             {% endfor %}
             {% for requirement in page.requirements %}
-                <li>
-                    {% if requirement.type == "internal" %}
-                    <a href="{{ site.baseurl }}/topics{{ requirement.link }}">{{ requirement.title }}</a>
-                    {% elsif requirement.type == "external" %}
-                    <a href="{{ requirement.link }}">{{ requirement.title }}</a>
+                {% if requirement.type == "internal" %}
+                    {% assign required_topic_metadata = site.data[requirement.topic_name] %}
+                    {% assign required_topic = site.pages | topic_filter:requirement.topic_name %}
+                    {% if requirement.tutorial_name %}
+                        {% for required_tuto in required_topic %}
+                            {% if required_tuto.tutorial_name == requirement.tutorial_name %}
+                                <li><a href="{{ site.baseurl }}/topics/{{ requirement.topic_name }}/tutorials/{{ requirement.tutorial_name }}/tutorial.html">{{ required_tuto.title }} ({{ required_topic_metadata.title }})</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <li><a href="{{ site.baseurl }}/topics/{{ requirement.topic_name }}">{{ required_topic_metadata.title }}</a></li>
                     {% endif %}
-                </li>
+                {% else %}
+                    <li><a href="{{ requirement.link }}">{{ requirement.title }}</a></li>
+                {% endif %}
             {% endfor %}
             </ul>
             {% endif %}
@@ -241,6 +257,33 @@ layout: base
         {% endif %}
 
         <h3>{% icon congratulations %} Congratulations on successfully completing this tutorial!</h3>
+
+        {% if page.follow_up_training %}
+        <p>Possible follow-up trainings:
+            <ul>
+            {% for material in page.follow_up_training %}
+                <li>
+                {% if material.type == "internal" %}
+                    {% assign follow_up_topic_metadata = site.data[material.topic_name] %}
+                    {% assign follow_up_topic = site.pages | topic_filter:material.topic_name %}
+                    {% if material.tutorial_name %}
+                        {% for follow_up_tuto in follow_up_topic %}
+                            {% if follow_up_tuto.tutorial_name == material.tutorial_name %}
+                                <a href="{{ site.baseurl }}/topics/{{ material.topic_name }}/tutorials/{{ material.tutorial_name }}/tutorial.html">{{ follow_up_tuto.title }} ({{ follow_up_topic_metadata.title }})</a>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <a href="{{ site.baseurl }}/topics/{{ material.topic_name }}">{{ follow_up_topic_metadata.title }}</a>
+                    {% endif %}
+                {% else %}
+                    <a href="{{ requirement.link }}">{{ requirement.title }}</a>
+                {% endif %}
+                </li>
+            {% endfor %}
+            </ul>
+        </p>
+        {% endif %}
+
         <hr>
         <br>
 

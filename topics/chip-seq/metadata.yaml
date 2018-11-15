@@ -6,18 +6,17 @@ summary: ChIP-sequencing is a method used to analyze protein interactions with D
 docker_image: null
 edam_ontology: topic_3169
 requirements:
--
-  title: "Galaxy introduction"
-  type: "internal"
-  link: "/introduction/"
--
-  title: "Quality control"
-  type: "internal"
-  link: "/sequence-analysis/"
--
-  title: "Mapping"
-  type: "internal"
-  link: "/sequence-analysis/"
+  -
+    type: "internal"
+    topic_name: "introduction"
+  -
+    type: "internal"
+    topic_name: "sequence-analysis"
+    tutorial_name: "quality-control"
+  -
+    type: "internal"
+    topic_name: "sequence-analysis"
+    tutorial_name: "mapping"
 
 maintainers:
 - malloryfreeberg

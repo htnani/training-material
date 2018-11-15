@@ -12,6 +12,11 @@ objectives:
   - "Perform a Small genome Assembly with Unicycler"
   - "Evaluate the Quality of the Assembly with Quast"
   - "Annotate the assembly with Prokka"
+follow_up_training:
+  -
+    type: "internal"
+    topic_name: assembly
+    tutorial_name: ecoli_comparison
 time_estimation: "4h"
 key_points:
   - "We learned about the strategies used by assemblers for hybrid assemblies"
